@@ -20,6 +20,17 @@ class Tree
     @children = children
   end
 
+
+  def depth_search(needle)
+  	return self if @payload == needle
+  	children.each do |child|
+  		tree = child.depth_search(needle)
+  		return tree unless tree.nil?
+  	end
+  	return nil
+  end
+
+
 end
 
 
