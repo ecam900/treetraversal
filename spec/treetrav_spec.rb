@@ -66,4 +66,16 @@ describe Tree do
 			end
 		end
 	end
+
+	describe "#breadth_search" do
+		context "when given the searched number is in the tree" do
+
+			context "when the number being searched for is the 'trunk' " do
+				it "returns the 'trunk' " do
+					trunk = Tree.new(5)
+					expect(trunk.breadth_search(5)).to eq trunk
+				end
+			end
+		end
+	end
 end

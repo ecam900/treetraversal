@@ -10,7 +10,7 @@
 # will move down to the second tier, which is its children's children. After
 # that it will check it's childrens' childrens' children.
 
-
+require "queue"
 
 class Tree
   attr_reader :payload, :children
@@ -29,6 +29,8 @@ class Tree
   	end
   	return nil
   end
+
+  
 
 
 end
