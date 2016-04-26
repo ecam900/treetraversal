@@ -30,7 +30,16 @@ class Tree
   	return nil
   end
 
-  
+  def breadth_search(needle)
+    return self if @payload == needle
+    children.each do |child|
+      return child if child.payload == needle
+
+    end
+
+    end
+    return nil
+  end
 
 
 end

@@ -69,12 +69,48 @@ describe Tree do
 
 	describe "#breadth_search" do
 		context "when given the searched number is in the tree" do
-
-			context "when the number being searched for is the 'trunk' " do
-				it "returns the 'trunk' " do
+			context "when the number being searched for is the trunk " do
+				it "returns the trunk " do
 					trunk = Tree.new(5)
 					expect(trunk.breadth_search(5)).to eq trunk
 				end
+			end
+
+			context "when the number being searched for is a child" do
+				context "when the number being searched for is on the shallow left" do
+					it "returns the node" do
+						target = Tree.new(7)
+						tree   = Tree.new(2,[target, Tree.new(5)])
+						expect(tree.breadth_search(7)).to eq target
+					end
+				end
+
+				context "when the number being searched for is on the shallow right" do
+					it "returns the node" do
+						target = Tree.new(5)
+						tree   = Tree.new(2, [Tree.new(7), target])
+						expect(tree.breadth_search(5)).to eq target
+					end
+				end
+
+				context "when the number being searched for is on the deep left left" do
+					it "returns the node" do
+						target = Tree.new(6)
+						tree   = Tree.new(5,
+											[Tree.new(7,[
+												Tree.new(6)])
+											]
+										 )
+						expect(tree.breadth_search(6)).to eq target
+					end
+				end
+			end
+		end
+
+		context "when the number being searched for is NOT in the tree" do
+			it "returns nil" do
+				tree = Tree.new(4)
+				expect(tree.breadth_search(5)).to be_nil
 			end
 		end
 	end
