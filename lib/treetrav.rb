@@ -1,15 +1,3 @@
-# Two types of searches:
-
-# Depth:   ------------------------------
-# Depth first search is all about going deeper into the tree structure
-# and exhausting the "children" objects before moving on to the siblings.
-
-# Breadth: ------------------------------
-# Breadth first search checks the items in order of their distance from the
-# root node. First the algorithm will check each of it's children. Then it
-# will move down to the second tier, which is its children's children. After
-# that it will check it's childrens' childrens' children.
-
 require "queue"
 
 class Tree
@@ -22,23 +10,23 @@ class Tree
 
 
   def depth_search(needle)
-  	return self if @payload == needle
-  	children.each do |child|
-  		tree = child.depth_search(needle)
-  		return tree unless tree.nil?
-  	end
-  	return nil
+    return self if @payload == needle
+    children.each do |child|
+      tree = child.depth_search(needle)
+      return tree unless tree.nil?
+    end
+    return nil
   end
 
   def breadth_search(needle)
     return self if @payload == needle
+    backlog = Queue.new
     children.each do |child|
       return child if child.payload == needle
-
+      backlog.enqueue(child)      
     end
-
-    end
-    return nil
+    current_node = backlog.dequeue
+    return current_node.breadth_search(needle) unless current_node.nil?
   end
 
 

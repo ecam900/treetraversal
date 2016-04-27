@@ -93,14 +93,24 @@ describe Tree do
 					end
 				end
 
-				context "when the number being searched for is on the deep left left" do
+				context "when the number being searched for is on the deep left" do
 					it "returns the node" do
 						target = Tree.new(6)
-						tree   = Tree.new(5,
-											[Tree.new(7,[
-												Tree.new(6)])
-											]
-										 )
+						tree   = Tree.new(5, [
+							Tree.new(7, [
+								target
+							])
+						])
+						expect(tree.breadth_search(6)).to eq target
+					end
+				end
+
+				context "when the number being searched for is on the deep right" do
+					it "returns the node" do
+						target       = Tree.new(6)
+						left_tree    = Tree.new(7, [Tree.new(8, [target])])
+						right_tree   = Tree.new(9, [Tree.new(10, [Tree.new(18)])])		
+						tree = Tree.new(1, [left_tree, right_tree])	
 						expect(tree.breadth_search(6)).to eq target
 					end
 				end
