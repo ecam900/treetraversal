@@ -1,5 +1,7 @@
 # treetraversal
-Tree Traversal Algorithm with TDD
+<h4> Tree Traversal Algorithm with TDD </h4>
+<p> Problem solved using Test Driven Development, with Rspec. </p>
+
 <hr />
 <b> Depth Search: </b>
 <p> Implemented with recursion. It checks the deep end of the tree, then moves through the children of the deep nodes.</p>
